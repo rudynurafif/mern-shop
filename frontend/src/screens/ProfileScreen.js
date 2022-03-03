@@ -116,6 +116,8 @@ const ProfileScreen = ({ location, history }) => {
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
+        ) : orders.length === 0 ? (
+          <Message variant='danger'>No order</Message>
         ) : (
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
@@ -125,7 +127,7 @@ const ProfileScreen = ({ location, history }) => {
                 <th>TOTAL</th>
                 <th>PAID</th>
                 <th>DELIVERED</th>
-                <th></th>
+                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -133,24 +135,26 @@ const ProfileScreen = ({ location, history }) => {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
+                  <td>$ {order.totalPrice}</td>
                   <td>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
-                      <i className='fas fa-times' style={{ color: "red" }}></i>
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
-                      <i className='fas fa-times' style={{ color: "red" }}></i>
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>Details</Button>
+                      <Button className='btn-sm' variant='light'>
+                        Details
+                      </Button>
                     </LinkContainer>
                   </td>
                 </tr>
