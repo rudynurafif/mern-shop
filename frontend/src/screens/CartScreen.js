@@ -100,6 +100,9 @@ const CartScreen = ({ match, location, history }) => {
                 Proceed To Checkout
               </Button>
             </ListGroup.Item>
+            <ListGroup.Item>
+              <Link to='/' style={{ textAlign: 'center' }}>See another products</Link>
+            </ListGroup.Item>
           </ListGroup>
         </Card>
       </Col>
@@ -108,3 +111,5 @@ const CartScreen = ({ match, location, history }) => {
 }
 
 export default CartScreen
+
+// if logout, reset cartscreen

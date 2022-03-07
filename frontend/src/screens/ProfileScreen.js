@@ -117,7 +117,7 @@ const ProfileScreen = ({ location, history }) => {
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
         ) : orders.length === 0 ? (
-          <Message variant='danger'>No order</Message>
+          <Message variant='danger'>No order history. <br/><br/> <a href="/">Order product here</a></Message>
         ) : (
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
@@ -126,8 +126,8 @@ const ProfileScreen = ({ location, history }) => {
                 <th>DATE</th>
                 <th>TOTAL</th>
                 <th>PAID</th>
-                <th>DELIVERED</th>
-                <th>ACTION</th>
+                <th style={{ textAlign: 'center' }}>DELIVERED</th>
+                <th style={{ textAlign: 'center' }}>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -150,7 +150,7 @@ const ProfileScreen = ({ location, history }) => {
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
                         Details

@@ -46,7 +46,7 @@ const UserListScreen = ({ history }) => {
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
-              <th>ADMIN</th>
+              <th style={{ textAlign: 'center' }}>ADMIN</th>
               <th></th>
             </tr>
           </thead>

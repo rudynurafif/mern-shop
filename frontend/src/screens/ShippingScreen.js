@@ -84,3 +84,5 @@ const ShippingScreen = ({ history }) => {
 }
 
 export default ShippingScreen
+
+// if log out, reset the address data
