@@ -27,7 +27,7 @@ import {
   USER_UPDATE_RESET,
 } from '../constants/userConstants'
 
-export const userLoginReducers = (state = {}, action) => {
+export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return { loading: true }
@@ -42,7 +42,7 @@ export const userLoginReducers = (state = {}, action) => {
   }
 }
 
-export const userRegisterReducers = (state = {}, action) => {
+export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_REGISTER_REQUEST:
       return { loading: true }
@@ -55,7 +55,7 @@ export const userRegisterReducers = (state = {}, action) => {
   }
 }
 
-export const userDetailReducers = (state = { user: {} }, action) => {
+export const userDetailReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true }
@@ -70,7 +70,7 @@ export const userDetailReducers = (state = { user: {} }, action) => {
   }
 }
 
-export const userUpdateProfileReducers = (state = {}, action) => {
+export const userUpdateProfileReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_UPDATE_PROFILE_REQUEST:
       return { loading: true }
@@ -100,7 +100,7 @@ export const userListReducer = (state = { users: [] }, action) => {
   }
 }
 
-export const userDeleteReducers = (state = { }, action) => {
+export const userDeleteReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_DELETE_REQUEST:
       return { loading: true }
@@ -113,7 +113,7 @@ export const userDeleteReducers = (state = { }, action) => {
   }
 }
 
-export const userUpdateReducers = (state = { user: {} }, action) => {
+export const userUpdateReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_UPDATE_REQUEST:
       return { loading: true }
@@ -123,7 +123,7 @@ export const userUpdateReducers = (state = { user: {} }, action) => {
       return { loading: false, error: action.payload }
     case USER_UPDATE_RESET:
       return {
-        user: {}
+        user: {},
       }
     default:
       return state

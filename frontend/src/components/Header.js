@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+// useDispatch for caling an action, bring the state from reducer in useSelector
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'

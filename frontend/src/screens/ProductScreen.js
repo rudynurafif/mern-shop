@@ -19,7 +19,7 @@ const ProductScreen = ({ history, match }) => {
 
   const dispatch = useDispatch()
 
-  const productDetails = useSelector((state) => state.productDetails)
+  const productDetails = useSelector((state) => state.productDetails) // dari store state
   const { loading, error, product } = productDetails
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -97,6 +97,7 @@ const ProductScreen = ({ history, match }) => {
                       </Col>
                     </Row>
                   </ListGroup.Item>
+
                   <ListGroup.Item>
                     <Row>
                       <Col>Status :</Col>
@@ -143,6 +144,8 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
+
+          {/* Reviews */}
           <Row>
             <Col md={6}>
               <h2>Reviews</h2>

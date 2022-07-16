@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
+import Meta from '../components/Meta'
 
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -34,6 +35,7 @@ const UserListScreen = ({ history }) => {
 
   return (
     <>
+    <Meta title='User list' />
       <h1>Users</h1>
       {loading ? (
         <Loader />
@@ -47,7 +49,7 @@ const UserListScreen = ({ history }) => {
               <th>NAME</th>
               <th>EMAIL</th>
               <th style={{ textAlign: 'center' }}>ADMIN</th>
-              <th></th>
+              <th style={{ textAlign: 'center' }}>ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -65,7 +67,7 @@ const UserListScreen = ({ history }) => {
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
                 </td>
-                <td>
+                <td style={{ textAlign: 'center' }}>
                   <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>

@@ -12,9 +12,9 @@ const Meta = ({ title, description, keywords }) => {
 }
 
 Meta.defaultProps = {
-  title: 'Welcome To RANShop',
-  description: 'Rudy Nurafif FullStack MERN ECommerce Portfolio',
-  keywords: 'Rudy Asa Nurafif, Rudy Nurafif, Rudy Asa',
+  title: 'Welcome To RANShop | by Rudy Nurafif',
+  description: 'Rudy Nurafif FullStack MERN JavaScript ECommerce Portfolio',
+  keywords: 'Rudy Asa Nurafif, Rudy Nurafif, Rudy Asa, rudynurafif',
 }
 
 export default Meta

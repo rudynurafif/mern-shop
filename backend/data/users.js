@@ -1,3 +1,5 @@
+// sample data yang akan di import (seed) ke database
+
 import bcrypt from 'bcryptjs'
 
 const users = [

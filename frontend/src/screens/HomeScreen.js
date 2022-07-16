@@ -20,6 +20,9 @@ const HomeScreen = ({ match }) => {
   const productList = useSelector((state) => state.productList)
   const { loading, error, products, page, pages } = productList
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
@@ -34,7 +37,8 @@ const HomeScreen = ({ match }) => {
           Go Back
         </Link>
       )}
-      <h1>Latest Product</h1>
+      {userInfo ? <h5 style={{ marginTop: '1rem', textAlign: 'right' }}>Welcome, {userInfo.name}</h5> : null }
+      {!keyword ? <h1>Our Latest Products</h1> : <h1>Search result..</h1>}
       {loading ? (
         <Loader />
       ) : error ? (

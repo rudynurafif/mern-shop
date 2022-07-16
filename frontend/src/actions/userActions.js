@@ -33,12 +33,14 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_REQUEST,
     })
 
+    // when sending data, we want to send to headers a content type of application/json
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
     }
 
+    // make the request, destructure to get data
     const { data } = await axios.post(
       '/api/users/login',
       { email, password },
@@ -64,10 +66,14 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
+  localStorage.removeItem('cartItems')
+  localStorage.removeItem('shippingAddress')
+  localStorage.removeItem('paymentMethod')
   dispatch({ type: USER_LOGOUT })
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: ORDER_LIST_MY_RESET })
   dispatch({ type: USER_LIST_RESET })
+  document.location.href = '/login'
 }
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -269,6 +275,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
 
     dispatch({ type: USER_UPDATE_SUCCESS })
 
+    //data = updated user
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
+import Meta from '../components/Meta'
 import {
   listProducts,
   deleteProduct,
@@ -35,6 +36,7 @@ const ProductListScreen = ({ history, match }) => {
     product: createdProduct,
   } = productCreate
 
+  // for knowing the user is login or not 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
@@ -72,6 +74,7 @@ const ProductListScreen = ({ history, match }) => {
 
   return (
     <>
+    <Meta title='Product List' />
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>

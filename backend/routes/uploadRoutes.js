@@ -4,6 +4,7 @@ import multer from 'multer'
 
 const router = express.Router()
 
+// config, initialize storage engine
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, 'uploads/')
@@ -11,11 +12,13 @@ const storage = multer.diskStorage({
   filename(req, file, cb) {
     cb(
       null,
+      // format nama file supaya tidak double (pakai formate date) dan original ext otomatis ditambahkan dot
       `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
     )
   },
 })
 
+// ekstensi file yang diperbolehkan
 function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
@@ -35,6 +38,8 @@ const upload = multer({
   },
 })
 
+
+// upload endpoint
 router.post('/', upload.single('image'), (req, res) => {
   res.send(`/${req.file.path}`)
 })

@@ -5,7 +5,7 @@ const Rating = ({ value, text, color }) => {
   return (
     <div className='rating'>
       <span>
-        <i style={{ color }}
+        <i style={{ color: color }}
           className={
             value >= 1
               ? 'fa-solid fa-star'

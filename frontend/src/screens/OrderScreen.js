@@ -15,6 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
+import Meta from '../components/Meta'
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id
@@ -91,6 +92,7 @@ const OrderScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
+    <Meta title='Your order details | RANShop' />
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -150,7 +152,7 @@ const OrderScreen = ({ match, history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product${item.product}`}>
+                          <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>

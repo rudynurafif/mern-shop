@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk' // untuk middleware, bekerja scr asynchronous
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
-  productListReducers,
-  productDetailsReducers,
+  productListReducer,
+  productDetailsReducer,
   productDeleteReducers,
   productCreateReducers,
   productUpdateReducer,
@@ -12,13 +12,13 @@ import {
 } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import {
-  userLoginReducers,
-  userRegisterReducers,
-  userDetailReducers,
-  userUpdateProfileReducers,
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailReducer,
+  userUpdateProfileReducer,
   userListReducer,
-  userDeleteReducers,
-  userUpdateReducers,
+  userDeleteReducer,
+  userUpdateReducer,
 } from './reducers/userReducers'
 import {
   orderCreateReducer,
@@ -30,21 +30,21 @@ import {
 } from './reducers/orderReducers'
 
 const reducer = combineReducers({
-  productList: productListReducers,
-  productDetails: productDetailsReducers,
+  productList: productListReducer,
+  productDetails: productDetailsReducer,
   productDelete: productDeleteReducers,
   productCreate: productCreateReducers,
   productUpdate: productUpdateReducer,
   productCreateReview: productCreateReviewReducer,
   productTopRated: productTopRatedReducer,
   cart: cartReducer,
-  userLogin: userLoginReducers,
-  userRegister: userRegisterReducers,
-  userDetails: userDetailReducers,
-  userUpdateProfile: userUpdateProfileReducers,
-  userList: userListReducer,
-  userDelete: userDeleteReducers,
-  userUpdate: userUpdateReducers,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  userList: userListReducer,  
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,

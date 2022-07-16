@@ -1,3 +1,5 @@
+// membuat skema collection
+
 import mongoose from 'mongoose'
 
 const reviewSchema = mongoose.Schema(
@@ -5,6 +7,7 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+    // user associated with the review schema
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -18,10 +21,10 @@ const reviewSchema = mongoose.Schema(
 
 const productSchema = mongoose.Schema(
   {
-    user: {
+    user: { // user mana yang membuat produk mana, koneksi / relationship produk dan user (admin)
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: 'User', // mereferensikan model yang mana
     },
     name: {
       type: String,

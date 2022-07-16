@@ -14,7 +14,7 @@ connectDB()
 
 const importData = async () => {
   try {
-    await Order.deleteMany()
+    await Order.deleteMany() // clear first
     await Product.deleteMany()
     await User.deleteMany()
 
@@ -28,11 +28,11 @@ const importData = async () => {
 
     await Product.insertMany(sampleProducts)
 
-    console.log('Data Imported'.green.inverse)
+    console.log('Data Imported!'.green.inverse)
     process.exit()
   } catch (error) {
     console.log(`${error}`.red.inverse)
-    process.exit(1)
+    process.exit(1) // exit with failure
   }
 }
 
@@ -42,7 +42,7 @@ const destroyData = async () => {
     await Product.deleteMany()
     await User.deleteMany()
 
-    console.log('Data Destroyed'.red.inverse)
+    console.log('Data Destroyed!'.red.inverse)
     process.exit()
   } catch (error) {
     console.log(`${error}`.red.inverse)
@@ -50,7 +50,7 @@ const destroyData = async () => {
   }
 }
 
-if (process.argv[2] === '-d') {
+if (process.argv[2] === '-d') { // (process argv adalah array yang mana = node backend/seeder -d)
   destroyData()
 } else {
   importData()

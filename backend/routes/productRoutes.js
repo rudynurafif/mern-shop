@@ -6,7 +6,7 @@ import {
   createProduct,
   updateProduct,
   createProductReview,
-  getTopProducts
+  getTopProducts,
 } from '../controllers/productController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 

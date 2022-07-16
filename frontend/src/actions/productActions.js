@@ -50,6 +50,7 @@ export const listProducts =
   }
 
 export const listProductDetails = (id) => async (dispatch) => {
+  // thunk middleware
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
@@ -162,6 +163,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     })
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
       type: PRODUCT_UPDATE_FAIL,

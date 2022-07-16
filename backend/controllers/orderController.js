@@ -20,6 +20,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     throw new Error('No order items')
     return
   } else {
+    // instansiasi
     const order = new Order({
       orderItems,
       user: req.user._id,
@@ -31,6 +32,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       totalPrice,
     })
 
+    // simpan ke database
     const createdOrder = await order.save()
 
     res.status(201).json(createdOrder)
@@ -63,7 +65,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   if (order) {
     order.isPaid = true
     order.paidAt = Date.now()
-    order.paymentResult = {
+    order.paymentResult = { // the fields that come from spesific PAYPAL response as payment  gateway
       id: req.body.id,
       status: req.body.status,
       update_time: req.body.update_time,

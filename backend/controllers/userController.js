@@ -6,11 +6,13 @@ import User from '../models/userModel.js'
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
+  // mendefinisikan data dari body
   const { email, password } = req.body
 
+  // find the user from the document
   const user = await User.findOne({ email })
 
-  if (user && (await user.matchPassword(password))) {
+  if (user && (await user.matchPassword(password))) { // mengecek kecocokan email dan password pada body json
     res.json({
       _id: user._id,
       name: user.name,
@@ -19,7 +21,7 @@ const authUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     })
   } else {
-    res.status(401)
+    res.status(401) // not authorized
     throw new Error('Invalid email or password')
   }
 })
@@ -37,14 +39,14 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exist')
   }
 
-  const user = await User.create({
+  const user = await User.create({ // membuat user dari body {name, email, password }
     name,
     email,
-    password,
+    password, // password sudah terenkripsi pada user model ketika create / registrasi ini berjalan
   })
 
   if (user) {
-    res.status(201).json({
+    res.status(201).json({ // 201, something is created
       _id: user._id,
       name: user.name,
       email: user.email,

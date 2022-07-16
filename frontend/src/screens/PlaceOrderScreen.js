@@ -19,7 +19,7 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 50)
   cart.taxPrice = addDecimals(Number((0.1 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
     Number(cart.itemsPrice) +
@@ -91,7 +91,7 @@ const PlaceOrderScreen = ({ history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product${item.product}`}>
+                          <Link to={`/product/  ${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
@@ -106,6 +106,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
+
         <Col md={4}>
           <Card className='mt-3'>
             <ListGroup variant='flush'>
@@ -118,24 +119,28 @@ const PlaceOrderScreen = ({ history }) => {
                   <Col>${cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
                   <Col>${cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Col>Tax (10%)</Col>
                   <Col>${cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
                   <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>

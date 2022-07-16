@@ -8,9 +8,10 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import Meta from '../components/Meta'
 
 const ProductEditScreen = ({ match, history }) => {
-  const productId = match.params.id
+  const productId = match.params.id // url parameter
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
@@ -53,7 +54,7 @@ const ProductEditScreen = ({ match, history }) => {
   }, [dispatch, productId, product, history, successUpdate])
 
   const uploadFileHandler = async (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0] // uploading a single file
     const formData = new FormData()
     formData.append('image', file)
     setUploading(true)
@@ -93,11 +94,12 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <>
+    <Meta title='Edit Product' />
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
+        <h1>Product Form</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -132,7 +134,7 @@ const ProductEditScreen = ({ match, history }) => {
               <Form.Label>Image</Form.Label>  
               <Form.Control
                 type='text'
-                placeholder='Enter image url'
+                placeholder='Enter image location'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
@@ -192,7 +194,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Button type='submit' variant='primary' className='mb-3'>
-              Update
+              Save
             </Button>
           </Form>
         )}

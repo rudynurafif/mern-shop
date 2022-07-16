@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetail, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import Meta from '../components/Meta'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -54,6 +56,8 @@ const ProfileScreen = ({ location, history }) => {
   }
 
   return (
+    <>
+    <Meta title={`Profile | ${userInfo.name}`} />
     <Row>
       <Col md={3}>
         <h2>User Profile</h2>
@@ -117,7 +121,13 @@ const ProfileScreen = ({ location, history }) => {
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
         ) : orders.length === 0 ? (
-          <Message variant='danger'>No order history. <br/><br/> <a href="/">Order product here</a></Message>
+          <Message variant='danger'>
+            No order history. <br />
+            <br />{' '} 
+            <Link to='/'>
+              See products here <i class='fa-solid fa-arrow-right'></i>
+            </Link>
+          </Message>
         ) : (
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
@@ -126,7 +136,7 @@ const ProfileScreen = ({ location, history }) => {
                 <th>DATE</th>
                 <th>TOTAL</th>
                 <th>PAID</th>
-                <th style={{ textAlign: 'center' }}>DELIVERED</th>
+                <th>DELIVERED</th>
                 <th style={{ textAlign: 'center' }}>ACTION</th>
               </tr>
             </thead>
@@ -164,6 +174,7 @@ const ProfileScreen = ({ location, history }) => {
         )}
       </Col>
     </Row>
+    </>
   )
 }
 
